@@ -133,7 +133,11 @@ function Navigation() {
             className="flex items-center gap-2 text-xl md:text-2xl font-bold"
             data-testid="link-logo"
           >
-            <Leaf className="w-7 h-7 md:w-8 md:h-8 text-primary" />
+            <img
+              src="/Logo.png"
+              alt="Ila Green"
+              className="w-8 h-8 md:w-10 md:h-10 object-contain"
+            />
             <span>Ila Green</span>
           </a>
 
