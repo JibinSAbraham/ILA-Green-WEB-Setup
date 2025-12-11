@@ -110,15 +110,15 @@ function Navigation() {
         <nav className="flex items-center justify-between gap-4 h-16 md:h-20">
           <a
             href="#"
-            className="flex items-center gap-2 text-xl md:text-2xl font-bold"
+            className="flex items-center gap-2"
             data-testid="link-logo"
+            aria-label="Ila Green home"
           >
             <img
               src="/Logo.png"
               alt="Ila Green"
-              className="w-8 h-8 md:w-10 md:h-10 object-contain"
+              className="w-10 h-10 md:w-12 md:h-12 object-contain"
             />
-            <span>Ila Green</span>
           </a>
 
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
