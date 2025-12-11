@@ -12,7 +12,7 @@ export default defineConfig({
     },
   },
   root: path.resolve(import.meta.dirname, "client"),
-  base: "/Fantasy-Mystery-Quest/",
+  base: "/",
   build: {
     outDir: path.resolve(import.meta.dirname, "docs"),
     emptyOutDir: true,
