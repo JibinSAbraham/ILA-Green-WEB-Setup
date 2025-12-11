@@ -1,23 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { useToast } from "@/hooks/use-toast";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { insertContactSchema, type InsertContact } from "@shared/schema";
-import { apiRequest } from "@/lib/queryClient";
 import {
   Menu,
   X,
@@ -34,10 +18,6 @@ import {
   Lightbulb,
   Cog,
   TrendingUp,
-  Mail,
-  Phone,
-  MapPin,
-  Clock,
   ArrowRight,
   ChevronRight,
 } from "lucide-react";
@@ -171,7 +151,7 @@ function Navigation() {
               Process
             </button>
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => scrollToSection("services")}
               data-testid="button-contact-nav"
             >
               Get Started
@@ -222,7 +202,7 @@ function Navigation() {
             </button>
             <Button
               className="w-full mt-2"
-              onClick={() => scrollToSection("contact")}
+              onClick={() => scrollToSection("services")}
               data-testid="button-contact-mobile"
             >
               Get Started
@@ -235,12 +215,7 @@ function Navigation() {
 }
 
 function HeroSection() {
-  const scrollToContact = () => {
-    const element = document.getElementById("contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  
 
   return (
     <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center overflow-hidden">
@@ -272,7 +247,10 @@ function HeroSection() {
             <Button
               size="lg"
               className="text-lg px-8"
-              onClick={scrollToContact}
+              onClick={() => {
+                const element = document.getElementById("services");
+                if (element) element.scrollIntoView({ behavior: "smooth" });
+              }}
               data-testid="button-hero-cta"
             >
               Schedule a Consultation
@@ -656,215 +634,7 @@ function ProcessSection() {
   );
 }
 
-function ContactSection() {
-  const { toast } = useToast();
-  
-  const form = useForm<InsertContact>({
-    resolver: zodResolver(insertContactSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      company: "",
-      message: "",
-    },
-  });
 
-  const mutation = useMutation({
-    mutationFn: async (data: InsertContact) => {
-      const response = await apiRequest("POST", "/api/contact", data);
-      return response;
-    },
-    onSuccess: () => {
-      toast({
-        title: "Message sent successfully!",
-        description: "We'll get back to you within 24 hours.",
-      });
-      form.reset();
-    },
-    onError: () => {
-      toast({
-        title: "Something went wrong",
-        description: "Please try again later.",
-        variant: "destructive",
-      });
-    },
-  });
-
-  const onSubmit = (data: InsertContact) => {
-    mutation.mutate(data);
-  };
-
-  return (
-    <section id="contact" className="py-16 md:py-20 lg:py-24 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-          <div className="lg:col-span-3">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" data-testid="text-contact-title">
-              Get In Touch
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Ready to transform your waste management? Fill out the form and our team 
-              will get back to you within 24 hours.
-            </p>
-            
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-xl">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Full Name</FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="John Doe"
-                            {...field}
-                            data-testid="input-name"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email Address</FormLabel>
-                        <FormControl>
-                          <Input
-                            type="email"
-                            placeholder="john@company.com"
-                            {...field}
-                            data-testid="input-email"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-                
-                <FormField
-                  control={form.control}
-                  name="company"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Company Name</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Your Company Ltd."
-                          {...field}
-                          data-testid="input-company"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>How can we help?</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Tell us about your waste management needs or CSR goals..."
-                          className="min-h-[120px] resize-none"
-                          {...field}
-                          data-testid="input-message"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full sm:w-auto px-8"
-                  disabled={mutation.isPending}
-                  data-testid="button-submit-contact"
-                >
-                  {mutation.isPending ? "Sending..." : "Send Message"}
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </form>
-            </Form>
-          </div>
-          
-          <div className="lg:col-span-2 space-y-6">
-            <Card className="p-6">
-              <h3 className="font-semibold mb-4">Contact Information</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 text-primary mt-0.5" />
-                  <div>
-                    <div className="text-sm text-muted-foreground">Email</div>
-                    <a
-                      href="mailto:hello@ilagreen.com"
-                      className="font-medium hover:text-primary transition-colors"
-                      data-testid="link-email"
-                    >
-                      hello@ilagreen.com
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 text-primary mt-0.5" />
-                  <div>
-                    <div className="text-sm text-muted-foreground">Phone</div>
-                    <a
-                      href="tel:+919876543210"
-                      className="font-medium hover:text-primary transition-colors"
-                      data-testid="link-phone"
-                    >
-                      +91 98765 43210
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-primary mt-0.5" />
-                  <div>
-                    <div className="text-sm text-muted-foreground">Office</div>
-                    <div className="font-medium">
-                      Mumbai, Maharashtra, India
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <Clock className="w-5 h-5 text-primary mt-0.5" />
-                  <div>
-                    <div className="text-sm text-muted-foreground">Response Time</div>
-                    <div className="font-medium">Within 24 hours</div>
-                  </div>
-                </div>
-              </div>
-            </Card>
-            
-            <Card className="p-6 bg-primary text-primary-foreground border-primary-border">
-              <h3 className="font-semibold mb-2">About Ila Green</h3>
-              <p className="text-sm text-primary-foreground/90">
-                We help Indian businesses turn waste into impact. We specialize in 
-                corporate waste management, CSR-backed sustainability projects, 
-                employee awareness, and impact reporting.
-              </p>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -926,7 +696,7 @@ export default function Home() {
         <CSRProjectsSection />
         <WhyChooseSection />
         <ProcessSection />
-        <ContactSection />
+        
       </main>
       <Footer />
     </div>
