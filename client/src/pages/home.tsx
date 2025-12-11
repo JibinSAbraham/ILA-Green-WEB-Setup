@@ -117,7 +117,7 @@ function Navigation() {
             <img
               src="/Logo.png"
               alt="Ila Green"
-              className="w-12 h-12 object-contain"
+              className="w-32 h-32 object-contain"
             />
           </a>
 
@@ -645,7 +645,7 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-2">
             <a href="#" className="flex items-center gap-2 mb-4">
-                <img src="/Logo.png" alt="Ila Green" className="w-12 h-12 object-contain" />
+                <img src="/Logo.png" alt="Ila Green" className="w-32 h-32 object-contain" />
               </a>
             <p className="text-sm text-muted-foreground max-w-md">
               Helping Indian businesses create measurable environmental and social 
