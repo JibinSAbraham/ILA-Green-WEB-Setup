@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -143,13 +144,11 @@ function Navigation() {
             >
               Pilot Engagements
             </button>
-            <button
-              onClick={() => scrollToSection("faq")}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              data-testid="link-faq"
-            >
-              FAQ
-            </button>
+            <Link href="/faq">
+              <a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" data-testid="link-faq">
+                FAQ
+              </a>
+            </Link>
             <Button
               onClick={() => scrollToSection("contact")}
               data-testid="button-contact-nav"
@@ -193,13 +192,11 @@ function Navigation() {
             >
               Pilot Engagements
             </button>
-            <button
-              onClick={() => scrollToSection("faq")}
-              className="block w-full text-left px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors"
-              data-testid="link-faq-mobile"
-            >
-              FAQ
-            </button>
+            <Link href="/faq">
+              <a className="block w-full text-left px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors" data-testid="link-faq-mobile">
+                FAQ
+              </a>
+            </Link>
             <Button
               className="w-full mt-2"
               onClick={() => scrollToSection("contact")}
@@ -990,7 +987,7 @@ function Footer() {
               <li><button onClick={() => document.getElementById('services')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-primary transition-colors">What We Do</button></li>
               <li><button onClick={() => document.getElementById('process')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-primary transition-colors">How We Work</button></li>
               <li><button onClick={() => document.getElementById('pilot')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-primary transition-colors">Pilot Engagements</button></li>
-              <li><button onClick={() => document.getElementById('faq')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-primary transition-colors">FAQ</button></li>
+              <li><Link href="/faq"><a className="hover:text-primary transition-colors">FAQ</a></Link></li>
               <li><button onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-primary transition-colors">Contact</button></li>
             </ul>
           </div>
@@ -1024,10 +1021,9 @@ export default function Home() {
         <ImpactMetrics />
         <ServicesSection />
         <WhoWeWorkWithSection />
+        <WhyChooseSection />
         <ProcessSection />
         <PilotEngagementSection />
-        <WhyChooseSection />
-        <FAQSection />
         <ContactSection />
       </main>
       <Footer />
