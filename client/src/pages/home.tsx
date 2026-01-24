@@ -227,7 +227,7 @@ function HeroSection() {
         <div className="max-w-3xl">
           <Badge className="mb-4 md:mb-6 bg-white/10 text-white border-white/20 backdrop-blur-md" data-testid="badge-trust">
             <Leaf className="w-3 h-3 mr-1" />
-            Delhi NCR's Execution-Led Waste Management Partner
+            Delhi NCR's Execution, Led Waste Management Partner
           </Badge>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-4 md:mb-6 text-white" data-testid="text-hero-headline">
@@ -236,8 +236,8 @@ function HeroSection() {
           </h1>
           
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-6 md:mb-8" data-testid="text-hero-subheadline">
-            Execution-led waste audits and ESG reporting for Delhi NCR organisations. 
-            We focus on measurable, practical interventions at the source — not theoretical sustainability claims.
+            Execution, led waste audits and ESG reporting for Delhi NCR organisations. 
+            We focus on measurable, practical interventions at the source, not theoretical sustainability claims.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
