@@ -127,34 +127,34 @@ function Navigation() {
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-services"
             >
-              Services
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              data-testid="link-projects"
-            >
-              CSR Projects
-            </button>
-            <button
-              onClick={() => scrollToSection("why-us")}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              data-testid="link-why-us"
-            >
-              Why Us
+              What We Do
             </button>
             <button
               onClick={() => scrollToSection("process")}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-process"
             >
-              Process
+              How We Work
+            </button>
+            <button
+              onClick={() => scrollToSection("pilot")}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              data-testid="link-pilot"
+            >
+              Pilot Engagements
+            </button>
+            <button
+              onClick={() => scrollToSection("faq")}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              data-testid="link-faq"
+            >
+              FAQ
             </button>
             <Button
-              onClick={() => scrollToSection("services")}
+              onClick={() => scrollToSection("contact")}
               data-testid="button-contact-nav"
             >
-              Get Started
+              Contact Us
             </Button>
           </div>
 
@@ -177,35 +177,35 @@ function Navigation() {
               className="block w-full text-left px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors"
               data-testid="link-services-mobile"
             >
-              Services
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              className="block w-full text-left px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors"
-              data-testid="link-projects-mobile"
-            >
-              CSR Projects
-            </button>
-            <button
-              onClick={() => scrollToSection("why-us")}
-              className="block w-full text-left px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors"
-              data-testid="link-why-us-mobile"
-            >
-              Why Us
+              What We Do
             </button>
             <button
               onClick={() => scrollToSection("process")}
               className="block w-full text-left px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors"
               data-testid="link-process-mobile"
             >
-              Process
+              How We Work
+            </button>
+            <button
+              onClick={() => scrollToSection("pilot")}
+              className="block w-full text-left px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors"
+              data-testid="link-pilot-mobile"
+            >
+              Pilot Engagements
+            </button>
+            <button
+              onClick={() => scrollToSection("faq")}
+              className="block w-full text-left px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors"
+              data-testid="link-faq-mobile"
+            >
+              FAQ
             </button>
             <Button
               className="w-full mt-2"
-              onClick={() => scrollToSection("services")}
+              onClick={() => scrollToSection("contact")}
               data-testid="button-contact-mobile"
             >
-              Get Started
+              Contact Us
             </Button>
           </div>
         )}
@@ -230,17 +230,17 @@ function HeroSection() {
         <div className="max-w-3xl">
           <Badge className="mb-4 md:mb-6 bg-white/10 text-white border-white/20 backdrop-blur-md" data-testid="badge-trust">
             <Leaf className="w-3 h-3 mr-1" />
-            Serving 100+ Indian Businesses
+            Delhi NCR's Execution-Led Waste Management Partner
           </Badge>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-4 md:mb-6 text-white" data-testid="text-hero-headline">
-            Turn Your Corporate Waste Into{" "}
-            <span className="text-green-400">Measurable Impact</span>
+            Measured Waste Reduction.{" "}
+            <span className="text-green-400">Credible CSR Impact.</span>
           </h1>
           
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-6 md:mb-8" data-testid="text-hero-subheadline">
-            We help Indian businesses manage waste sustainably, execute CSR projects, 
-            train employees, and document impact for compliance and reporting.
+            Execution-led waste audits and ESG reporting for Delhi NCR organisations. 
+            We focus on measurable, practical interventions at the source — not theoretical sustainability claims.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
@@ -248,25 +248,25 @@ function HeroSection() {
               size="lg"
               className="text-lg px-8"
               onClick={() => {
-                const element = document.getElementById("services");
+                const element = document.getElementById("contact");
                 if (element) element.scrollIntoView({ behavior: "smooth" });
               }}
               data-testid="button-hero-cta"
             >
-              Schedule a Consultation
+              Request Pilot Engagement
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="text-lg px-8 bg-white/10 text-white border-white/30 backdrop-blur-md"
+              className="text-lg px-8 bg-white/10 text-white border-white/30 backdrop-blur-md hover:bg-white/20"
               onClick={() => {
-                const element = document.getElementById("services");
+                const element = document.getElementById("process");
                 if (element) element.scrollIntoView({ behavior: "smooth" });
               }}
               data-testid="button-hero-secondary"
             >
-              Explore Services
+              How We Work
             </Button>
           </div>
         </div>
@@ -278,41 +278,44 @@ function HeroSection() {
 }
 
 function ImpactMetrics() {
-  const wasteMetric = useCountUp(50000);
-  const peopleMetric = useCountUp(5000);
-  const companiesMetric = useCountUp(100);
-
   return (
-    <section className="py-12 md:py-16 border-y bg-card">
+    <section className="py-16 md:py-20 border-y bg-card">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">Reducing Landfill Burden Through Measured Action</h2>
+          <p className="text-muted-foreground max-w-3xl mx-auto">
+            Delhi's landfills are operating far beyond capacity. We help organisations reduce the waste they contribute through 
+            on-ground audits, verified recycling, and transparent reporting.
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-          <div ref={wasteMetric.ref} className="text-center" data-testid="metric-waste">
+          <div className="text-center" data-testid="metric-waste">
             <Scale className="w-8 h-8 text-primary mx-auto mb-3" />
             <div className="text-4xl md:text-5xl font-bold text-foreground mb-1">
-              {wasteMetric.count.toLocaleString()}+
+              On-Ground
             </div>
             <div className="text-sm md:text-base text-muted-foreground font-medium">
-              Kg Waste Diverted
+              Waste Audits & Measurement
             </div>
           </div>
           
-          <div ref={peopleMetric.ref} className="text-center" data-testid="metric-people">
+          <div className="text-center" data-testid="metric-people">
             <Users className="w-8 h-8 text-primary mx-auto mb-3" />
             <div className="text-4xl md:text-5xl font-bold text-foreground mb-1">
-              {peopleMetric.count.toLocaleString()}+
+              Verified
             </div>
             <div className="text-sm md:text-base text-muted-foreground font-medium">
-              People Trained
+              Recycling Partners
             </div>
           </div>
           
-          <div ref={companiesMetric.ref} className="text-center" data-testid="metric-companies">
+          <div className="text-center" data-testid="metric-companies">
             <Heart className="w-8 h-8 text-primary mx-auto mb-3" />
             <div className="text-4xl md:text-5xl font-bold text-foreground mb-1">
-              {companiesMetric.count.toLocaleString()}+
+              Audit-Ready
             </div>
             <div className="text-sm md:text-base text-muted-foreground font-medium">
-              Companies Served
+              CSR/ESG Reports
             </div>
           </div>
         </div>
@@ -325,42 +328,42 @@ function ServicesSection() {
   const services = [
     {
       icon: ClipboardList,
-      title: "Waste Audits & Segregation Setup",
-      description: "Comprehensive on-site assessment and implementation of effective waste segregation systems tailored to your business.",
+      title: "On-Site Waste Audits",
+      description: "Physical assessment of waste generation at your premises — offices, commercial spaces, or venues. We measure waste by category using weight-based evaluation.",
       features: [
-        "Complete waste stream analysis",
-        "Custom segregation infrastructure",
-        "Staff training and signage",
+        "Complete waste stream mapping",
+        "Weight-based measurement by category",
+        "Visual and documentary evidence",
       ],
     },
     {
-      icon: Heart,
-      title: "CSR Initiative Linking",
-      description: "Connect your waste management efforts with impactful CSR projects that align with your company's values.",
+      icon: Recycle,
+      title: "Structured Segregation & Recycling",
+      description: "On-site segregation supported by trained project workers. Recyclable waste channeled through verified vendors with statutory registrations.",
       features: [
-        "Project identification and matching",
-        "Community partnership development",
-        "Brand visibility and engagement",
-      ],
-    },
-    {
-      icon: GraduationCap,
-      title: "Employee Workshops & Training",
-      description: "Engaging workshops that educate and motivate your workforce to embrace sustainable practices.",
-      features: [
-        "Interactive training sessions",
-        "Behavior change programs",
-        "Sustainability champions program",
+        "Trained segregation support",
+        "Verified recycling partners",
+        "Vendor compliance documentation",
       ],
     },
     {
       icon: FileText,
-      title: "Impact Reporting & Compliance",
-      description: "Detailed documentation and reports that meet CSR compliance requirements and showcase your impact.",
+      title: "CSR/ESG Impact Reporting",
+      description: "Data-backed impact reports suitable for CSR disclosures, ESG reporting, and stakeholder communication. All data supported by on-ground measurement.",
       features: [
-        "Quantified impact metrics",
-        "CSR compliance documentation",
-        "Annual sustainability reports",
+        "Waste diverted from landfill (%)",
+        "Carbon impact reduction estimates",
+        "Audit-ready documentation",
+      ],
+    },
+    {
+      icon: TrendingUp,
+      title: "Pilot Engagements Available",
+      description: "Short-term pilot projects to establish baseline data, test workflows, and deliver a complete impact report — at a reduced commercial model.",
+      features: [
+        "Baseline waste data establishment",
+        "Process validation and refinement",
+        "Full impact report included",
       ],
     },
   ];
@@ -370,10 +373,11 @@ function ServicesSection() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" data-testid="text-services-title">
-            Our Services
+            What We Do
           </h2>
           <p className="text-lg text-muted-foreground" data-testid="text-services-subtitle">
-            End-to-end waste management solutions designed for Indian businesses
+            ILA Green provides execution-led waste management services combined with data-backed CSR/ESG impact reporting.<br/>
+            <span className="text-sm mt-2 inline-block">Note: ILA Green does not handle e-waste.</span>
           </p>
         </div>
         
@@ -407,97 +411,173 @@ function ServicesSection() {
   );
 }
 
-function CSRProjectsSection() {
-  const projects = [
-    {
-      icon: GraduationCap,
-      title: "School & Community Programs",
-      description: "Implementing waste segregation education and infrastructure in schools and local communities to build awareness from the ground up.",
-      impact: "10,000+ students educated",
-      image: schoolProgramImage,
-      featured: true,
-    },
+function WhoWeWorkWithSection() {
+  const clientTypes = [
     {
       icon: Users,
-      title: "Employee Volunteering",
-      description: "Organize meaningful clean-up drives and awareness campaigns with your team, fostering a culture of environmental responsibility.",
-      impact: "500+ volunteer hours logged",
-      image: volunteerImage,
-      featured: false,
+      title: "Corporate Offices & IT Parks",
+      description: "Business parks and corporate campuses looking to reduce landfill dependency and meet ESG reporting requirements.",
+    },
+    {
+      icon: GraduationCap,
+      title: "Co-Working Spaces",
+      description: "Flexible workspaces wanting verifiable CSR impact and structured waste management processes.",
+    },
+    {
+      icon: Heart,
+      title: "Retail & Commercial Establishments",
+      description: "Retail chains and commercial venues preparing for ESG disclosures and stakeholder reporting.",
     },
     {
       icon: Recycle,
-      title: "E-Waste & Plastic Collection",
-      description: "Specialized collection initiatives for electronic waste and plastics, ensuring proper recycling and disposal channels.",
-      impact: "15,000 kg collected",
-      image: ewasteImage,
-      featured: false,
+      title: "Event Venues & SMEs",
+      description: "Temporary workplaces and growing organisations beginning their sustainability journey with on-ground execution.",
     },
   ];
 
   return (
-    <section id="projects" className="py-16 md:py-20 lg:py-24 bg-muted/30 scroll-mt-20">
+    <section id="who-we-serve" className="py-16 md:py-20 lg:py-24 bg-muted/30 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" data-testid="text-projects-title">
-            CSR Project Ideas
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" data-testid="text-clients-title">
+            Who We Work With
           </h2>
-          <p className="text-lg text-muted-foreground" data-testid="text-projects-subtitle">
-            Impactful initiatives that create lasting change in communities
+          <p className="text-lg text-muted-foreground" data-testid="text-clients-subtitle">
+            ILA Green currently serves organisations across Delhi NCR that want real, defensible sustainability outcomes.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-          {projects.map((project, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {clientTypes.map((client, index) => (
             <Card
-              key={project.title}
-              className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${
-                project.featured ? "lg:col-span-2 lg:row-span-1" : ""
-              }`}
-              data-testid={`card-project-${index}`}
+              key={client.title}
+              className="p-6 md:p-8 hover:shadow-lg transition-all duration-300"
+              data-testid={`card-client-${index}`}
             >
-              <div className={`${project.featured ? "lg:flex" : ""}`}>
-                <div className={`relative ${project.featured ? "lg:w-1/2" : ""}`}>
-                  <div className="aspect-video">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                </div>
-                <div className={`p-6 md:p-8 ${project.featured ? "lg:w-1/2 lg:flex lg:flex-col lg:justify-center" : ""}`}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <project.icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <Badge variant="secondary" className="text-xs">
-                      <BarChart3 className="w-3 h-3 mr-1" />
-                      {project.impact}
-                    </Badge>
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-semibold mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {project.description}
-                  </p>
-                </div>
-              </div>
+              <client.icon className="w-10 h-10 text-primary mb-4" />
+              <h3 className="text-xl md:text-2xl font-semibold mb-3">
+                {client.title}
+              </h3>
+              <p className="text-muted-foreground">
+                {client.description}
+              </p>
             </Card>
           ))}
         </div>
         
-        <div className="mt-12 text-center">
-          <Card className="inline-block p-6 md:p-8 bg-primary text-primary-foreground border-primary-border">
-            <h3 className="text-xl font-semibold mb-2">Measuring Impact</h3>
-            <p className="text-primary-foreground/90 max-w-lg">
-              We track and report: Kg of waste diverted, people trained, 
-              carbon footprint reduction, and social & environmental benefits.
-            </p>
+        <div className="mt-12">
+          <Card className="p-6 md:p-8 bg-primary/5 border-primary/20">
+            <h3 className="text-xl font-semibold mb-3">Our services are ideal for organisations that:</h3>
+            <div className="grid md:grid-cols-2 gap-3">
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span>Need verifiable CSR contributions</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span>Want to reduce landfill dependency</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span>Are preparing for ESG disclosures or audits</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span>Prefer on-ground execution over desk-based consulting</span>
+              </div>
+            </div>
           </Card>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function PilotEngagementSection() {
+  return (
+    <section id="pilot" className="py-16 md:py-20 lg:py-24 bg-muted/30 scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <Badge className="mb-4">Limited Availability</Badge>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            Pilot Engagements
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            To build robust, scalable processes, ILA Green offers limited pilot engagements at a <strong>discounted commercial model</strong>.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
+          <Card className="p-6 md:p-8">
+            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <Lightbulb className="w-6 h-6 text-primary" />
+              Why Pilots?
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              Pilot projects allow both ILA Green and the client to:
+            </p>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span>Establish baseline waste data</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span>Test segregation and vendor workflows</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span>Identify operational gaps</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span>Align reporting formats with requirements</span>
+              </li>
+            </ul>
+          </Card>
+
+          <Card className="p-6 md:p-8 bg-primary/5 border-primary/20">
+            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <FileText className="w-6 h-6 text-primary" />
+              What a Pilot Includes
+            </h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span><strong>Defined short-term engagement</strong> with clear scope</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span><strong>Full on-site audit</strong> and segregation support</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span><strong>Waste measurement</strong> by category</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span><strong>Recycling</strong> through verified vendors</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span><strong>End-of-pilot CSR/ESG impact report</strong></span>
+              </li>
+            </ul>
+          </Card>
+        </div>
+
+        <Card className="p-6 md:p-8 text-center bg-gradient-to-r from-primary/10 to-primary/5">
+          <p className="text-lg mb-4">
+            Pilot clients receive the same execution standards and reporting discipline as full-scale engagements.
+          </p>
+          <Button size="lg" onClick={() => {
+            const element = document.getElementById("contact");
+            if (element) element.scrollIntoView({ behavior: "smooth" });
+          }}>
+            Request Pilot Engagement
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Button>
+        </Card>
       </div>
     </section>
   );
@@ -507,65 +587,67 @@ function WhyChooseSection() {
   const values = [
     {
       icon: CheckCircle2,
-      title: "Transparent & Accountable",
-      description: "Clear reporting and full visibility into every step of your sustainability journey.",
+      title: "Physical Audits",
+      description: "On-ground execution, not abstract consulting. We work at your premises with real, measured data.",
     },
     {
       icon: BarChart3,
-      title: "Measurable Impact",
-      description: "Quantified metrics that demonstrate real results for your CSR reporting needs.",
+      title: "Measured Data",
+      description: "Weight-based evaluations and verified processing. Every metric is backed by documentary evidence.",
     },
     {
       icon: Cog,
-      title: "End-to-End Execution",
-      description: "From audit to implementation to reporting - we handle everything seamlessly.",
+      title: "Verified Processing",
+      description: "All recycling vendors are checked for statutory registrations and compliance documentation.",
     },
     {
       icon: TrendingUp,
-      title: "Professional Solutions",
-      description: "Industry-leading expertise in sustainable waste management practices.",
+      title: "Transparent Reporting",
+      description: "Audit-ready reports suitable for CSR disclosures, ESG reporting, and stakeholder communication.",
     },
   ];
 
   return (
     <section id="why-us" className="py-16 md:py-20 lg:py-24 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" data-testid="text-whyus-title">
-              Why Choose Ila Green?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-6" data-testid="text-whyus-subtitle">
-              We're not just a service provider - we're your partner in creating 
-              sustainable impact. Our approach combines professionalism with 
-              genuine commitment to environmental and social change.
-            </p>
-            <Button
-              onClick={() => {
-                const element = document.getElementById("contact");
-                if (element) element.scrollIntoView({ behavior: "smooth" });
-              }}
-              data-testid="button-whyus-cta"
-            >
-              Partner With Us
-              <ChevronRight className="w-4 h-4 ml-1" />
-            </Button>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-            {values.map((value, index) => (
-              <Card
-                key={value.title}
-                className="p-5 md:p-6"
-                data-testid={`card-value-${index}`}
-              >
-                <value.icon className="w-8 h-8 text-primary mb-3" />
-                <h3 className="font-semibold mb-2">{value.title}</h3>
-                <p className="text-sm text-muted-foreground">{value.description}</p>
-              </Card>
-            ))}
-          </div>
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" data-testid="text-whyus-title">
+            Why ILA Green
+          </h2>
+          <p className="text-lg text-muted-foreground" data-testid="text-whyus-subtitle">
+            ILA Green was founded with a clear intent: to bridge the gap between on-ground waste handling and credible sustainability reporting. 
+            <strong className="block mt-2">Practical impact, measurable outcomes, and credible reporting — not theoretical sustainability claims.</strong>
+          </p>
         </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 mb-8">
+          {values.map((value, index) => (
+            <Card
+              key={value.title}
+              className="p-6 md:p-8 hover:shadow-lg transition-shadow"
+              data-testid={`card-value-${index}`}
+            >
+              <value.icon className="w-10 h-10 text-primary mb-4" />
+              <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
+              <p className="text-muted-foreground">{value.description}</p>
+            </Card>
+          ))}
+        </div>
+
+        <Card className="p-6 md:p-8 bg-card border-2">
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-primary/10 rounded-lg">
+              <Leaf className="w-6 h-6 text-primary" />
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-2">Geography: Delhi NCR Only</h3>
+              <p className="text-muted-foreground">
+                ILA Green currently operates exclusively in Delhi NCR. This focused geography allows us to maintain operational control, 
+                verify vendors closely, and deliver consistent execution quality. Expansion will be considered only after processes are proven and refined.
+              </p>
+            </div>
+          </div>
+        </Card>
       </div>
     </section>
   );
@@ -576,39 +658,71 @@ function ProcessSection() {
     {
       number: "01",
       icon: ClipboardList,
-      title: "Audit",
-      description: "Comprehensive assessment of your current waste streams and practices",
+      title: "Initial Assessment",
+      description: "Understanding your operations, waste profile, and compliance requirements through feasibility check",
     },
     {
       number: "02",
       icon: Lightbulb,
-      title: "Plan",
-      description: "Custom strategy designed to meet your sustainability goals and CSR objectives",
+      title: "On-Site Audit",
+      description: "Physical audit of waste generation points with baseline data collection and weight-based measurement",
     },
     {
       number: "03",
       icon: Cog,
-      title: "Execute",
-      description: "Professional implementation with training and infrastructure setup",
+      title: "Segregation & Processing",
+      description: "On-site segregation by trained workers with recyclable waste channeled to verified vendors",
     },
     {
       number: "04",
       icon: FileText,
-      title: "Report",
-      description: "Detailed impact documentation for compliance and stakeholder communication",
+      title: "Impact Reporting",
+      description: "Data validation and consolidated CSR/ESG impact report with supporting documentation",
     },
   ];
 
   return (
-    <section id="process" className="py-16 md:py-20 lg:py-24 bg-muted/30 scroll-mt-20">
+    <section id="process" className="py-16 md:py-20 lg:py-24 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" data-testid="text-process-title">
-            Our Process
+            How We Work
           </h2>
           <p className="text-lg text-muted-foreground" data-testid="text-process-subtitle">
-            A proven 4-step approach to transforming your waste management
+            A structured 4-step approach ensuring credibility, traceability, and audit readiness
           </p>
+        </div>
+        
+        {/* Process Visual Strip */}
+        <div className="mb-12 flex justify-center">
+          <Card className="inline-block p-4 bg-primary/5 border-primary/20">
+            <div className="flex items-center gap-2 text-sm font-medium flex-wrap justify-center">
+              <span className="flex items-center gap-1">
+                <ClipboardList className="w-4 h-4 text-primary" />
+                Audit
+              </span>
+              <ChevronRight className="w-4 h-4 text-muted-foreground" />
+              <span className="flex items-center gap-1">
+                <Cog className="w-4 h-4 text-primary" />
+                Segregation
+              </span>
+              <ChevronRight className="w-4 h-4 text-muted-foreground" />
+              <span className="flex items-center gap-1">
+                <Recycle className="w-4 h-4 text-primary" />
+                Recycling
+              </span>
+              <ChevronRight className="w-4 h-4 text-muted-foreground" />
+              <span className="flex items-center gap-1">
+                <FileText className="w-4 h-4 text-primary" />
+                Reporting
+              </span>
+              <ChevronRight className="w-4 h-4 text-muted-foreground" />
+              <span className="flex items-center gap-1">
+                <TrendingUp className="w-4 h-4 text-primary" />
+                Impact
+              </span>
+            </div>
+          </Card>
         </div>
         
         <div className="relative">
@@ -617,7 +731,7 @@ function ProcessSection() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {steps.map((step, index) => (
               <div key={step.number} className="relative" data-testid={`step-${index}`}>
-                <Card className="p-6 text-center relative z-10 h-full">
+                <Card className="p-6 text-center relative z-10 h-full hover:shadow-lg transition-shadow">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg mb-4">
                     {step.number}
                   </div>
@@ -636,6 +750,198 @@ function ProcessSection() {
 
 
 
+function FAQSection() {
+  const faqs = [
+    {
+      q: "Is this work eligible under India's CSR framework?",
+      a: "ILA Green's interventions support environmental sustainability objectives aligned with Schedule VII of the Companies Act, subject to how the client integrates outcomes into their broader CSR strategy. Final applicability rests with the client's CSR committee and auditors."
+    },
+    {
+      q: "Can your reports be used in ESG disclosures or annual reports?",
+      a: "Yes. Our reports are structured to support internal ESG reporting, sustainability disclosures, and stakeholder communication. All data is supported by on-ground measurement and vendor documentation."
+    },
+    {
+      q: "How is the data collected and verified?",
+      a: "Data is collected through on-site audits, waste segregation, and weight-based measurement. It is cross-verified with vendor processing confirmations and internal validation checks."
+    },
+    {
+      q: "Will this disrupt our daily operations?",
+      a: "No. Audits and segregation are planned to minimise disruption. Engagements are designed to integrate with existing workflows wherever possible."
+    },
+    {
+      q: "Do you handle e-waste?",
+      a: "No. ILA Green does not handle e-waste or e-waste reporting."
+    },
+    {
+      q: "How long does a pilot engagement last?",
+      a: "Pilot engagements are typically short-term and scope-defined. Timelines are agreed upfront based on site size and waste profile."
+    },
+    {
+      q: "Do you guarantee zero landfill waste?",
+      a: "No. We work towards maximum landfill diversion that is practically achievable for each site. All outcomes are reported transparently."
+    },
+    {
+      q: "What about pricing and commercials?",
+      a: "Commercials are defined based on site size, waste profile, duration, and reporting requirements. Pilot engagements are offered at a reduced scope-based commercial model."
+    }
+  ];
+
+  return (
+    <section id="faq" className="py-16 md:py-20 lg:py-24 bg-muted/30 scroll-mt-20">
+      <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Clear answers to common questions about our services and approach
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <Card key={index} className="p-6 md:p-8">
+              <h3 className="font-semibold text-lg mb-3 flex items-start gap-2">
+                <span className="text-primary mt-1">Q{index + 1}.</span>
+                {faq.q}
+              </h3>
+              <p className="text-muted-foreground pl-8">
+                {faq.a}
+              </p>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactSection() {
+  return (
+    <section id="contact" className="py-16 md:py-20 lg:py-24 scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            Get Started
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Ready to reduce landfill waste and build credible CSR impact? Let's talk.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <Card className="p-8">
+            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+            
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-1">Phone</h4>
+                  <a href="tel:+919654129577" className="text-muted-foreground hover:text-primary transition-colors">
+                    +91 9654129577
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-1">Email</h4>
+                  <a href="mailto:ilagreen0896@gmail.com" className="text-muted-foreground hover:text-primary transition-colors break-all">
+                    ilagreen0896@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-1">LinkedIn</h4>
+                  <a 
+                    href="https://www.linkedin.com/in/ilagreen/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors break-all"
+                  >
+                    linkedin.com/in/ilagreen
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-1">Location</h4>
+                  <p className="text-muted-foreground">
+                    Delhi NCR, India
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="p-8 bg-primary/5 border-primary/20">
+            <h3 className="text-2xl font-bold mb-4">Request Information</h3>
+            <p className="text-muted-foreground mb-6">
+              Interested in a pilot engagement or want to learn more about our services? 
+              Reach out via phone, email, or LinkedIn, and we'll respond promptly to discuss your needs.
+            </p>
+            
+            <div className="space-y-4">
+              <Card className="p-4 bg-background">
+                <h4 className="font-semibold mb-2 flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                  What to Expect
+                </h4>
+                <ul className="text-sm text-muted-foreground space-y-2 ml-7">
+                  <li>• Initial feasibility discussion</li>
+                  <li>• Site assessment planning</li>
+                  <li>• Pilot engagement options</li>
+                  <li>• Transparent commercial discussion</li>
+                </ul>
+              </Card>
+
+              <Card className="p-4 bg-background">
+                <h4 className="font-semibold mb-2 flex items-center gap-2">
+                  <Lightbulb className="w-5 h-5 text-primary" />
+                  Response Time
+                </h4>
+                <p className="text-sm text-muted-foreground ml-7">
+                  We typically respond within 24-48 hours to all inquiries.
+                </p>
+              </Card>
+            </div>
+
+            <div className="mt-6 pt-6 border-t">
+              <p className="text-sm text-muted-foreground">
+                <strong>Pilot engagements are limited.</strong> Contact us early to secure a slot that works for your timeline.
+              </p>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -645,39 +951,64 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-2">
             <a href="#" className="flex items-center gap-2 mb-4">
-                <img src="/Logo.png" alt="Ila Green" className="w-32 h-32 object-contain" />
-              </a>
-            <p className="text-sm text-muted-foreground max-w-md">
-              Helping Indian businesses create measurable environmental and social 
-              impact through sustainable waste management and CSR initiatives.
+              <img src="/Logo.png" alt="Ila Green" className="w-32 h-32 object-contain" />
+            </a>
+            <p className="text-sm text-muted-foreground max-w-md mb-4">
+              Execution-led waste audits and ESG reporting for Delhi NCR organisations. 
+              Reducing landfill burden through measured action.
             </p>
+            <div className="space-y-2 text-sm">
+              <p className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <a href="tel:+919654129577" className="hover:text-primary transition-colors">+91 9654129577</a>
+              </p>
+              <p className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <a href="mailto:ilagreen0896@gmail.com" className="hover:text-primary transition-colors">ilagreen0896@gmail.com</a>
+              </p>
+            </div>
           </div>
           
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Waste Audits</li>
-              <li>CSR Initiatives</li>
-              <li>Employee Training</li>
-              <li>Impact Reporting</li>
+              <li>On-Site Waste Audits</li>
+              <li>Structured Segregation</li>
+              <li>Verified Recycling</li>
+              <li>CSR/ESG Reporting</li>
+              <li>Pilot Engagements</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
+            <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>About Us</li>
-              <li>Our Process</li>
-              <li>Contact</li>
-              <li>Privacy Policy</li>
+              <li><button onClick={() => document.getElementById('services')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-primary transition-colors">What We Do</button></li>
+              <li><button onClick={() => document.getElementById('process')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-primary transition-colors">How We Work</button></li>
+              <li><button onClick={() => document.getElementById('pilot')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-primary transition-colors">Pilot Engagements</button></li>
+              <li><button onClick={() => document.getElementById('faq')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-primary transition-colors">FAQ</button></li>
+              <li><button onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-primary transition-colors">Contact</button></li>
             </ul>
           </div>
         </div>
         
-        <div className="pt-8 border-t text-center text-sm text-muted-foreground">
-          <p data-testid="text-copyright">
-            &copy; {currentYear} Ila Green. All rights reserved. Committed to a sustainable India.
-          </p>
+        <div className="pt-8 border-t space-y-3">
+          <div className="text-xs text-muted-foreground bg-muted/30 p-4 rounded-lg">
+            <p className="font-semibold mb-1">Important Disclaimer:</p>
+            <p>
+              CSR and ESG impact figures are project-specific, based on on-ground measurement and verified processing data. 
+              Outcomes may vary by site and operations. ILA Green does not handle e-waste.
+            </p>
+          </div>
+          <div className="text-center text-sm text-muted-foreground">
+            <p data-testid="text-copyright">
+              &copy; {currentYear} ILA Green. All rights reserved. Delhi NCR, India.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
@@ -692,10 +1023,12 @@ export default function Home() {
         <HeroSection />
         <ImpactMetrics />
         <ServicesSection />
-        <CSRProjectsSection />
-        <WhyChooseSection />
+        <WhoWeWorkWithSection />
         <ProcessSection />
-        
+        <PilotEngagementSection />
+        <WhyChooseSection />
+        <FAQSection />
+        <ContactSection />
       </main>
       <Footer />
     </div>
