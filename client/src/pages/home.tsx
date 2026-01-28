@@ -227,7 +227,7 @@ function HeroSection() {
         <div className="max-w-3xl">
           <Badge className="mb-4 md:mb-6 bg-white/10 text-white border-white/20 backdrop-blur-md" data-testid="badge-trust">
             <Leaf className="w-3 h-3 mr-1" />
-            Delhi NCR's Execution, Led Waste Management Partner
+            Delhi NCR's Execution-Led Waste Management Partner
           </Badge>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-4 md:mb-6 text-white" data-testid="text-hero-headline">
@@ -236,8 +236,8 @@ function HeroSection() {
           </h1>
           
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-6 md:mb-8" data-testid="text-hero-subheadline">
-            Execution, led waste audits and ESG reporting for Delhi NCR organisations. 
-            We focus on measurable, practical interventions at the source, not theoretical sustainability claims.
+            Execution-led waste audits and ESG reporting for Delhi NCR organisations. 
+            We focus on measurable & practical interventions at the source, not theoretical sustainability claims.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
@@ -326,7 +326,7 @@ function ServicesSection() {
     {
       icon: ClipboardList,
       title: "On-Site Waste Audits",
-      description: "Physical assessment of waste generation at your premises — offices, commercial spaces, or venues. We measure waste by category using weight-based evaluation.",
+      description: "Physical assessment of waste generated at your premises (offices, commercial spaces, or venues). Waste is measured by category using a weight-based evaluation method.",
       features: [
         "Complete waste stream mapping",
         "Weight-based measurement by category",
@@ -356,7 +356,7 @@ function ServicesSection() {
     {
       icon: TrendingUp,
       title: "Pilot Engagements Available",
-      description: "Short-term pilot projects to establish baseline data, test workflows, and deliver a complete impact report — at a reduced commercial model.",
+      description: "Short-term pilot projects to establish baseline data, test workflows, and deliver a complete impact report at a reduced commercial model.",
       features: [
         "Baseline waste data establishment",
         "Process validation and refinement",
@@ -814,6 +814,41 @@ function FAQSection() {
 }
 
 function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({ name: "", company: "", message: "" });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-16 md:py-20 lg:py-24 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
@@ -827,6 +862,73 @@ function ContactSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <Card className="p-8">
+            <h3 className="text-2xl font-bold mb-6">Send Us a Query</h3>
+            
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="company" className="block text-sm font-medium mb-2">
+                  Company Name *
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  required
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="Your company"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium mb-2">
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  rows={5}
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="Tell us about your waste management needs..."
+                />
+              </div>
+
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send Query"}
+              </Button>
+
+              {submitStatus === "success" && (
+                <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800 text-sm">
+                  Thank you! Your query has been sent successfully. We'll get back to you within 24-48 hours.
+                </div>
+              )}
+
+              {submitStatus === "error" && (
+                <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800 text-sm">
+                  Sorry, there was an error sending your query. Please email us directly at info@ilagreen.com
+                </div>
+              )}
+            </form>
+          </Card>
+
           <Card className="p-8">
             <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
             
@@ -853,8 +955,8 @@ function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Email</h4>
-                  <a href="mailto:ilagreen0896@gmail.com" className="text-muted-foreground hover:text-primary transition-colors break-all">
-                    ilagreen0896@gmail.com
+                  <a href="mailto:info@ilagreen.com" className="text-muted-foreground hover:text-primary transition-colors break-all">
+                    info@ilagreen.com
                   </a>
                 </div>
               </div>
@@ -965,7 +1067,7 @@ function Footer() {
                 <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:ilagreen0896@gmail.com" className="hover:text-primary transition-colors">ilagreen0896@gmail.com</a>
+                <a href="mailto:info@ilagreen.com" className="hover:text-primary transition-colors">info@ilagreen.com</a>
               </p>
             </div>
           </div>

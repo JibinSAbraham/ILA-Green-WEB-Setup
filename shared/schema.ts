@@ -28,14 +28,13 @@ export const contactSubmissions = pgTable("contact_submissions", {
 
 export const insertContactSchema = createInsertSchema(contactSubmissions).pick({
   name: true,
-  email: true,
   company: true,
   message: true,
 }).extend({
   name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
   company: z.string().min(2, "Company name is required"),
   message: z.string().min(10, "Message must be at least 10 characters"),
+  email: z.string().optional().default("info@ilagreen.com"),
 });
 
 export type InsertContact = z.infer<typeof insertContactSchema>;

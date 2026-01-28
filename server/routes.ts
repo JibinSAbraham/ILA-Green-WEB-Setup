@@ -11,8 +11,18 @@ export async function registerRoutes(
   
   app.post("/api/contact", async (req, res) => {
     try {
-      const validatedData = insertContactSchema.parse(req.body);
+      // Add default email if not provided
+      const dataWithEmail = {
+        ...req.body,
+        email: req.body.email || "info@ilagreen.com"
+      };
+      
+      const validatedData = insertContactSchema.parse(dataWithEmail);
       const submission = await storage.createContactSubmission(validatedData);
+      
+      // Here you would typically send an email notification to info@ilagreen.com
+      // For now, we'll just store it in the database
+      
       res.status(201).json({ 
         success: true, 
         message: "Contact submission received successfully",
